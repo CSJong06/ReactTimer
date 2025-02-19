@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TimerCard from './components/common/Card.jsx'
+import TimerCard from './Components/common/Card'
 
 import './App.css'
 
@@ -7,9 +7,11 @@ function App() {
   
   return (
     <>
-      <TimerCard/>
+      <img className="background" src="Background.avif"/>
+      <div className="rain-overlay"></div>
+      <TimerCard />
     </>
   )
 }
 
-export default App;
+export default App
