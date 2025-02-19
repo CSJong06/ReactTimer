@@ -1,6 +1,7 @@
 import React from "react";
 
 const formatTime = (seconds) => {
+    // Convert seconds to minutes
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;

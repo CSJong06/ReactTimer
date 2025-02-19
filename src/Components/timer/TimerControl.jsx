@@ -1,17 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 
+// takes time and setTime from the card component
 const TimerButton = ({ time, setTime }) => {
+    // initializes a running state
     const [isRunning, setIsRunning] = useState(false);
+    // initializes a timerId state
     const intervalRef = useRef(null);
 
     const startTimer = () => {
+        // sets the running state to true
         if (!isRunning) {
             setIsRunning(true);
+            // sets the interval to update the time every second
             intervalRef.current = setInterval(() => {
                 setTime(prevTime => {
                     if (prevTime > 0) {
                         return prevTime - 1;
-                    } else {
+                    } 
+                    // stops the timer at 0
+                    else {
                         stopTimer();
                         return 0;
                     }
@@ -20,6 +27,7 @@ const TimerButton = ({ time, setTime }) => {
         }
     };
 
+    //stops the timer
     const stopTimer = () => {
         if (intervalRef.current) {
             clearInterval(intervalRef.current);
@@ -28,12 +36,13 @@ const TimerButton = ({ time, setTime }) => {
         }
     };
 
+    //resets the timer
     const resetTimer = () => {
         stopTimer();
         setTime(1500); // Reset to 25 minutes
     };
 
-
+    // stops the timer when the component unmounts
     useEffect(() => {
         return () => {
             if (intervalRef.current) {
@@ -42,6 +51,7 @@ const TimerButton = ({ time, setTime }) => {
         };
     }, []);
 
+    //documentation within jsx is difficult 
     return (
         <div className="button-container">
             <button onClick={isRunning ? stopTimer : startTimer}>
