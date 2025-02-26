@@ -11,12 +11,15 @@ const TimerButton = ({ time, setTime }) => {
         // sets the running state to true
         if (!isRunning) {
             setIsRunning(true);
+
             // sets the interval to update the time every second
             intervalRef.current = setInterval(() => {
+                //set time as time - 1
                 setTime(prevTime => {
                     if (prevTime > 0) {
                         return prevTime - 1;
                     } 
+                    
                     // stops the timer at 0
                     else {
                         stopTimer();
@@ -30,9 +33,9 @@ const TimerButton = ({ time, setTime }) => {
     //stops the timer
     const stopTimer = () => {
         if (intervalRef.current) {
-            clearInterval(intervalRef.current);
+            clearInterval(intervalRef.current); // resets the timerId
             intervalRef.current = null;
-            setIsRunning(false);
+            setIsRunning(false); //set the timer to not running
         }
     };
 
