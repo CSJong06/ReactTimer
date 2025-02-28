@@ -1,28 +1,47 @@
 import React, { useState, useEffect, useRef } from "react";
+import TimerInput from "./TimerInput";
+import { useNotifications } from "../context/NotificationContext"; // Import Notifications Hook
 
-// takes time and setTime from the card component
 const TimerButton = ({ time, setTime }) => {
-    // initializes a running state
+    //initialize the states
     const [isRunning, setIsRunning] = useState(false);
-    // initializes a timerId state
     const intervalRef = useRef(null);
+    const [hasStarted, setHasStarted] = useState(false);
+
+    const { addNotification } = useNotifications(); // Get the function to trigger notifications
+
+    // Initialize completedTimers count from localStorage
+    const getCompletedTimers = () => {
+        // Try to get completedTimers from localStorage
+        const completedTimers = localStorage.getItem("completedTimers");
+        return completedTimers ? Number(completedTimers) : 0; // Default to 0
+    };
+
+    // state for completed timers
+    const [completedTimers, setCompletedTimers] = useState(getCompletedTimers());
 
     const startTimer = () => {
-        // sets the running state to true
+        //get the value from local storage
+        const timersStarted = Number(localStorage.getItem("timersStarted")) || 0;
+        localStorage.setItem("timersStarted", timersStarted + 1); // Update the count
+
+        if (!hasStarted) {
+            setHasStarted(true);
+            addNotification("Timer started!", "success"); // Notification for timer starting
+        }
+
+
         if (!isRunning) {
             setIsRunning(true);
 
-            // sets the interval to update the time every second
+            //create interal to decrement the time every second
             intervalRef.current = setInterval(() => {
-                //set time as time - 1
-                setTime(prevTime => {
+                setTime((prevTime) => {
                     if (prevTime > 0) {
                         return prevTime - 1;
-                    } 
-                    
-                    // stops the timer at 0
-                    else {
-                        stopTimer();
+                    } else {
+                        stopTimer(); // Stop the timer when time reaches 0
+                        incrementCompletedTimers(); // Increment completed timers count
                         return 0;
                     }
                 });
@@ -30,40 +49,46 @@ const TimerButton = ({ time, setTime }) => {
         }
     };
 
-    //stops the timer
     const stopTimer = () => {
+        // clear the interval
         if (intervalRef.current) {
-            clearInterval(intervalRef.current); // resets the timerId
+            clearInterval(intervalRef.current);
             intervalRef.current = null;
-            setIsRunning(false); //set the timer to not running
+            setIsRunning(false); // restart the state
         }
     };
 
-    //resets the timer
     const resetTimer = () => {
         stopTimer();
         setTime(1500); // Reset to 25 minutes
+        setHasStarted(false);
+        setIsRunning(false);
     };
 
-    // stops the timer when the component unmounts
+    // Function to increment completed timers in localStorage
+    const incrementCompletedTimers = () => {
+        const newCompletedTimers = completedTimers + 1;
+        //update in local storage
+        localStorage.setItem("completedTimers", newCompletedTimers);
+        //update in state
+        setCompletedTimers(newCompletedTimers);
+        addNotification(`Timer completed!`, "success");
+    };
+
     useEffect(() => {
         return () => {
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
+            stopTimer(); // Cleanup timer on unmount
         };
     }, []);
 
-    //documentation within jsx is difficult 
     return (
         <div className="button-container">
-            <button onClick={isRunning ? stopTimer : startTimer}>
-                {isRunning ? 'Pause' : 'Start'}
+            <button className="btn" onClick={isRunning ? stopTimer : startTimer}>
+                {isRunning ? "Pause" : "Start"}
             </button>
-            <button onClick={resetTimer}>Reset</button>
+            <button className="btn" onClick={resetTimer}>Reset</button>
         </div>
     );
-
 };
 
 export default TimerButton;

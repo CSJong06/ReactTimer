@@ -57,7 +57,7 @@
 
   border-radius: 10px;
   
-  box-shadow: 0px 0px 50px rgb(255, 91, 206);
+  box-shadow: 0px 0px 50px #ff5bce;
 }
 
 .background {
@@ -74,7 +74,6 @@
   z-index: -1;
 }
 
-
 .rain-overlay {
   position: fixed;
   top: 0;
@@ -89,4 +88,98 @@
   filter: blur(2px);
   opacity: 0.1;
   z-index: -1;
+}
+
+.btn {
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: #ff5bce;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.confirmBtn{
+  border-radius: 5px;
+  border: 1px solid #1a1a1a;
+  
+  background-color: #1a1a1a;
+  color: #ff5bce;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.appContainer{
+  display: flex;
+  gap: 50px;
+}
+
+/* Light Theme */
+.light-theme {
+  color: #566fff; /* Dark text */
+}
+
+.light-theme .Card {
+  background-color: #f0f0f0; /* Light card background */
+  color: #566fff; /* Dark text */
+  box-shadow: 0px 0px 50px #566fff;
+}
+
+/* Dark Theme */
+.dark-theme {
+  color: #ffffff; /* Light text */
+}
+
+.dark-theme .Card {
+  background-color: rgb(53, 51, 48); /* Dark card background */
+  color: rgb(255, 86, 128); /* Light text */
+}
+
+.settings-panel{
+  background-color: rgb(53, 51, 48);
+  opacity: .95;
+  color: rgb(255, 86, 128);
+
+  padding: 20px;
+  width: 300px;
+
+  border-radius: 10px;
+  
+  box-shadow: 0px 0px 50px #ff5bce;
+  display: flex;
+  flex-direction: column;
+}
+
+.light-theme .settings-panel{
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+.light-theme .btn {
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #ffffff;
+  color: #566fff;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.light-theme .confirmBtn{
+  border-radius: 5px;
+  border: 1px solid #1a1a1a;
+  
+  background-color: #ffffff;
+  color: #566fff;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }

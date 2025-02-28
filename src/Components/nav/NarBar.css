@@ -1,0 +1,29 @@
+nav {
+  background-color: #353330;
+  opacity: .95;
+  color: rgb(255, 86, 128);
+
+  margin-bottom: 20px;
+  
+  width: 100%;
+
+  border-radius: 10px;
+  
+  box-shadow: 0px 0px 50px #ff5bce;
+}
+
+.nav-link {
+    margin-right: 15px; /* Add space between nav items */
+    color: #ff5680; /* Updated for better visibility in light theme */
+}
+
+.light-theme .nav-link {
+    color: #566fff; /* Link color for light theme */
+}
+
+
+.light-theme nav {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0); /* Text color for light theme */
+  box-shadow: none; /* Remove shadow in light theme */
+}
