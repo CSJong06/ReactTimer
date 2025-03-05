@@ -183,3 +183,23 @@
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+.Console {
+  background-color: rgb(53, 51, 48);
+  width: 90%;
+  min-height: 25%;
+  max-height: 25%; /* Allow height to adjust based on content */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Add border */
+  padding: 15px; /* Increase padding */
+  border-radius: 10px; /* Ensure rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add box shadow */
+}
+
+.toast {
+  height: 15px; /* Set a specific height for toast notifications */
+  text-align: left;
+}
+
+.light-theme .Console {
+  background-color: #f0f0f0;
+} 

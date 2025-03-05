@@ -13,7 +13,7 @@ const Toast = ({ id, message, type, remove }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       remove(id);
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer); //clear the timer when the component unmounts
   }, [id, remove]); 
@@ -26,26 +26,29 @@ const Toast = ({ id, message, type, remove }) => {
   };
 
   return (
-    <div
-      className={clsx(
-        "toast flex items-center space-x-2 p-3 rounded-lg shadow-md cursor-pointer",
-        {
-          "bg-green-100": type === "success",
-          "bg-yellow-100": type === "warning",
-          "bg-blue-100": type === "info",
-          "bg-red-100": type === "error",
-        }
-      )}
-      onClick={() => remove(id)}
-    >
-      <span>{iconLabels[type]}: </span><span>{message}</span>
+    <div className="console">
+      <div
+        className={clsx(
+          "toast flex items-center space-x-2 p-3 rounded-lg shadow-md cursor-pointer",
+          {
+            "bg-green-100": type === "success",
+            "bg-yellow-100": type === "warning",
+            "bg-blue-100": type === "info",
+            "bg-red-100": type === "error",
+          }
+        )}
+        onClick={() => remove(id)}
+      >
+        <span className="message">{iconLabels[type]}: </span>
+        <span className="message">{message}</span>
+      </div>
     </div>
   );
 };
 
 const ToastManager = () => {
   //grab the functions from the contexts
-  const { notifications, removeNotification } = useNotifications();
+  const { notifications, removeNotification, addNotification } = useNotifications();
   const { settings } = useContext(SettingsContext); 
 
   // toasts get the id, message, type, and remove function from the notifications array
