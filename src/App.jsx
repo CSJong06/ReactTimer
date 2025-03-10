@@ -6,13 +6,13 @@ import ToastManager from './Components/Notifications/ToastManager';
 import Settings from './Components/Pages/Settings';
 import NavBar from './Components/nav/NavBar';
 import Home from './Components/Pages/Home';
-import Companion from './Components/Pages/Companion';
+import Companion from './Components/Companion/Companion';
 import './App.css';
 
 function App() {
   return (
     <NotificationProvider> 
-      <Companion />
+      {/* <Companion /> */}
       <Router>
         <SettingsProvider>
           <NavBar/>

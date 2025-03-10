@@ -10,8 +10,10 @@ const Achievements = ( { achievements } ) => {
 
     return (
         <div>
-          <h2>Title: {latestTitle}</h2>
-        
+          <label style={{color:"white"}}>Title</label>
+          <div style={{ backgroundColor: "#474747",borderRadius:"10px", marginTop:"-10px"}}>
+            <p style={{ marginLeft: "15px", padding:"5px", color:"rgb(255, 86, 128)", }}>{latestTitle}</p>
+          </div>
         </div>
     );
     

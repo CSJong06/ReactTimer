@@ -6,12 +6,15 @@ const CompletedTimers = ({ completedTimers }) => {
 
     //if there are no completed timers, display default message
     <div>
+      <label>Timers completed</label>
+      <div style={{ backgroundColor: "#474747",borderRadius:"10px",marginTop:"-10px"}}>
         {completedTimers === 0 ? (
 
-            <p>You have not completed any timers. </p>
+            <p style={{ marginLeft: "15px", padding:"5px"}}>You have not completed any timers. </p>
         ) : (
-            <p>You have completed: {completedTimers} timers!</p>
+            <p style={{ marginLeft: "15px", padding:"5px"}}>{completedTimers} completed</p>
         )}
+      </div>
     </div>
 
   );

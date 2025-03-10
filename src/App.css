@@ -53,7 +53,7 @@
   color: rgb(255, 86, 128);
 
   padding: 20px;
-  width: 300px;
+  width: 500px;
 
   border-radius: 10px;
   
@@ -136,7 +136,7 @@
 }
 
 .dark-theme .Card {
-  background-color: rgb(53, 51, 48); /* Dark card background */
+  background-color: #353330; /* Dark card background */
   color: rgb(255, 86, 128); /* Light text */
 }
 
@@ -203,3 +203,51 @@
 .light-theme .Console {
   background-color: #f0f0f0;
 } 
+
+
+.sidePanel {
+    position: fixed; /* Fix it to the side of the screen */
+    top: 0;
+    left: 0; /* Change to right: 0; if you want it on the right */
+    width: 300px; /* Set a width for the side panel */
+    height: 100%; /* Full height */
+    background-color: #353330; /* Background color */
+    text-align: left;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
+    transition: transform 0.3s ease; /* Smooth transition */
+    transform: translateX(-100%); /* Hide it off-screen */
+}
+
+.sidePanel.visible {
+    transform: translateX(0); /* Bring it into view */
+}
+
+.sidePanel.hidden {
+    transform: translateX(-100%); /* Hide it off-screen */
+}
+
+.companionContainer {
+  position: absolute;
+  top: 175px; /* Adjust based on your UI */
+  left: 950px; /* Adjust to position the eye */
+  width: 150px;
+  height: 150px;
+  z-index: 10;
+}
+
+.wheatley {
+  position: relative;
+  width: 200%; /* Ensure it scales properly */
+  height: auto;
+  z-index: 2;
+}
+
+.pupil {
+  position: absolute;
+  top: 15%;
+  left: 17%;
+  transform: translate(-50%, -50%); /* Center it perfectly */
+  width: 250px; /* Adjust the pupil size */
+  height: auto;
+  z-index: 1;
+}

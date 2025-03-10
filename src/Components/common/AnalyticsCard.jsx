@@ -120,13 +120,11 @@ const AnalyticsCard = () => {
 
   // return the components with the data used
   return (
-    <div className="Card">
+    <div  style={{ maxWidth: '100%', padding: '10px' }}>
+
+      <Achievements achievements={achievements} />
       <TimerAmounts timersStarted={timersStarted} />
       <CompletedTimers completedTimers={completedTimers} />
-      <Achievements achievements={achievements} />
-      <div className="Console">
-        <ToastManager />
-      </div>
     </div>
   );
 };
