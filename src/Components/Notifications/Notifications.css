@@ -1,0 +1,39 @@
+.toast {
+    margin-top: 15px;
+    position: relative;
+    background-color: #353330;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    opacity: .95;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .toast.fade-out {
+    opacity: 0;
+  }
+  
+  .toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: #ff4081; /* Change color as needed */
+    width: 100%;
+    animation: shrink-progress 5s linear forwards;
+  }
+  
+  @keyframes shrink-progress {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0%;
+    }
+  }
+  

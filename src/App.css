@@ -195,11 +195,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add box shadow */
 }
 
-.toast {
-  height: 15px; /* Set a specific height for toast notifications */
-  text-align: left;
-}
-
 .light-theme .Console {
   background-color: #f0f0f0;
 } 
@@ -209,13 +204,14 @@
     position: fixed; /* Fix it to the side of the screen */
     top: 0;
     left: 0; /* Change to right: 0; if you want it on the right */
-    width: 300px; /* Set a width for the side panel */
+    width: 325px; /* Set a width for the side panel */
     height: 100%; /* Full height */
     background-color: #353330; /* Background color */
     text-align: left;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
     transition: transform 0.3s ease; /* Smooth transition */
     transform: translateX(-100%); /* Hide it off-screen */
+    overflow: auto;
 }
 
 .sidePanel.visible {

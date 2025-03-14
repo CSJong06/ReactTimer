@@ -1,0 +1,28 @@
+
+.title-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .title-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .unlocked {
+    background: #ff4081;
+    color: white;
+  }
+  
+  .locked {
+    background: gray;
+    color: lightgray;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  

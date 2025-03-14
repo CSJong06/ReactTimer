@@ -6,23 +6,30 @@ import { useNotifications } from "../context/NotificationContext";
 import TimerAmounts from "../analytics/TimerAmounts"; 
 import CompletedTimers from "../analytics/CompletedTimers";
 import Achievements from "../analytics/Achievements";
+import ProgressBar from "../analytics/ProgressBar";
+import TitleSelection from "../analytics/TitleSelction";
+import StreakChart from "../analytics/StreakChart";
 
 // Import ToastManager to use notifications
 import ToastManager from "../Notifications/ToastManager"; 
 
 const AnalyticsCard = () => {
 
-  // initialize memory for the data to display
-  const { addNotification } = useNotifications(); // Access addNotification
+  // Get notifications function from the context
+  const { addNotification } = useNotifications(); 
 
+  // initialize all the memory used
   const [timersStarted, setTimersStarted] = useState(0);
   const [completedTimers, setCompletedTimers] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [streakHistory, setStreakHistory] = useState([]);
 
+  //get the data from the localstorage
   const [achievements, setAchievements] = useState(() => {
     return JSON.parse(localStorage.getItem("achievements")) || {};
   });
   
-
+  // function to update achievements
   const updateAchievements = () => {
     // declare the milestones
     const milestones = [
@@ -60,6 +67,57 @@ const AnalyticsCard = () => {
     updateAchievements();
   }, [timersStarted, completedTimers]); // Runs when these values change
   
+  // get selected title from localstorage 
+  const [selectedTitle, setSelectedTitle] = useState(
+    localStorage.getItem("selectedTitle") || "No Title Selected"
+  );
+
+  //function to update streak
+  const updateStreak = () => {
+    // declare the current date
+    const today = new Date().toISOString().split("T")[0]; 
+    // declare the last date that was stored
+    const lastActiveDate = localStorage.getItem("lastActiveDate");
+    // re-initialize any existing streak
+    let streakCount = Number(localStorage.getItem("streakCount")) || 0;
+
+    // initialze the streak if it doesn't exist
+    let streakHistory = JSON.parse(localStorage.getItem("streakHistory"));
+    if (!Array.isArray(streakHistory)) {
+      console.log("Initializing streakHistory in localStorage...");
+      streakHistory = [];
+      localStorage.setItem("streakHistory", JSON.stringify(streakHistory)); // Initialize empty array
+    }
+
+    if (lastActiveDate === today) {
+      return { streakCount, streakHistory }; 
+    }
+
+    // declare yesterday's date
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayString = yesterday.toISOString().split("T")[0];
+
+    // check if yesterday was active
+    if (lastActiveDate === yesterdayString) {
+      streakCount += 1; // Continue streak
+    } else {
+      streakCount = 1; // Reset streak if a day was missed
+    }
+
+    // Append new entry if it doesn't already exist for today
+    const lastEntry = streakHistory[streakHistory.length - 1];
+    if (!lastEntry || lastEntry.date !== today) {
+      streakHistory.push({ date: today, streak: streakCount });
+      localStorage.setItem("streakHistory", JSON.stringify(streakHistory)); // Save the updated history
+    }
+
+    // Save updated values to localStorage
+    localStorage.setItem("lastActiveDate", today);
+    localStorage.setItem("streakCount", streakCount);
+
+    return { streakCount, streakHistory };
+  };
 
   // updating the timersStarted count
   const updateTimersStarted = () => {
@@ -118,13 +176,31 @@ const AnalyticsCard = () => {
     };
   }, []);
 
+  // on mount get the data and update accordingly
+  useEffect(() => {
+    const { streakCount, streakHistory } = updateStreak();
+    setStreak(streakCount);
+    setStreakHistory(streakHistory);
+}, []);
+
   // return the components with the data used
   return (
     <div  style={{ maxWidth: '100%', padding: '10px' }}>
 
-      <Achievements achievements={achievements} />
+      <Achievements selectedTitle={selectedTitle} />
       <TimerAmounts timersStarted={timersStarted} />
       <CompletedTimers completedTimers={completedTimers} />
+      <div  className="analytics-card">
+        <h2>Session Streak</h2>
+        <p style={{ backgroundColor: "#474747", borderRadius: "10px", marginTop: "-10px" }}>🔥streak: {streak}</p>
+        <StreakChart streakHistory={streakHistory} />
+      </div>
+      <TitleSelection 
+        timersStarted={timersStarted} 
+        completedTimers={completedTimers} 
+        onTitleSelect={setSelectedTitle} 
+      />
+
     </div>
   );
 };

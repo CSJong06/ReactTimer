@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import { useNotifications } from '../context/NotificationContext';
+
 import TimerCard from '../common/TimerCard';
+import ProgressBar from '../analytics/ProgressBar';
 import AnalyticsCard from '../common/AnalyticsCard';
+import ToastManager from '../Notifications/ToastManager';
 
 function Home() {
   const [time, setTime] = useState(1500);
   const [timersStarted, setTimersStarted] = useState(0);
   const [panelVisible, setPanelVisible] = useState(false);
+  const { addNotification } = useNotifications();
 
   return (
     <div>
@@ -23,11 +28,13 @@ function Home() {
       </button>
       <div className={`sidePanel ${panelVisible ? 'visible' : 'hidden'}`}>
         <AnalyticsCard style={{ maxWidth: '100%', padding: '10px' }} />
-
       </div>
 
       <div className='appContainer'>
         <TimerCard initialTime={time} onTimeChange={setTime} />
+      </div>
+      <div>
+        <ToastManager />
       </div>
     </div>
   );

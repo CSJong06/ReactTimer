@@ -3,7 +3,9 @@ import { useNotifications } from "../context/NotificationContext";
 import { useContext } from "react"; 
 import { SettingsContext } from "../context/SettingsContext"; 
 
+
 import { useEffect } from "react";
+import "./Notifications.css"
 import clsx from "clsx";
 
 //takes id, message, type, and remove as props
@@ -41,6 +43,7 @@ const Toast = ({ id, message, type, remove }) => {
       >
         <span className="message">{iconLabels[type]}: </span>
         <span className="message">{message}</span>
+        <div className="toast-progress"></div>
       </div>
     </div>
   );
@@ -55,9 +58,10 @@ const ToastManager = () => {
   // only if the setting is enabled
   return (
     <div className="fixed top-5 right-5 z-50 flex flex-col space-y-2">
-      {settings && settings.notifications && notifications.map(({ id, message, type }) => ( // Conditional rendering based on notifications setting
+      {settings && settings.notifications && notifications.map(({ id, message, type }) => (
         <Toast key={id} id={id} message={message} type={type} remove={removeNotification} />
       ))}
+  
     </div>
   );
 };
