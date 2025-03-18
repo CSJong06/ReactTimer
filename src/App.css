@@ -222,28 +222,4 @@
     transform: translateX(-100%); /* Hide it off-screen */
 }
 
-.companionContainer {
-  position: absolute;
-  top: 175px; /* Adjust based on your UI */
-  left: 950px; /* Adjust to position the eye */
-  width: 150px;
-  height: 150px;
-  z-index: 10;
-}
 
-.wheatley {
-  position: relative;
-  width: 200%; /* Ensure it scales properly */
-  height: auto;
-  z-index: 2;
-}
-
-.pupil {
-  position: absolute;
-  top: 15%;
-  left: 17%;
-  transform: translate(-50%, -50%); /* Center it perfectly */
-  width: 250px; /* Adjust the pupil size */
-  height: auto;
-  z-index: 1;
-}

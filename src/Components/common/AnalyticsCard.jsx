@@ -12,11 +12,14 @@ import StreakChart from "../analytics/StreakChart";
 
 // Import ToastManager to use notifications
 import ToastManager from "../Notifications/ToastManager"; 
+import { useSpeak } from "../context/AudioContext"; // ✅ Import Speak Context
+
 
 const AnalyticsCard = () => {
 
   // Get notifications function from the context
   const { addNotification } = useNotifications(); 
+  const { speak } = useSpeak(); // ✅ Get the speak function
 
   // initialize all the memory used
   const [timersStarted, setTimersStarted] = useState(0);
@@ -61,6 +64,7 @@ const AnalyticsCard = () => {
       localStorage.setItem("achievements", JSON.stringify(newAchievements)); // Persist to localStorage
     }
 
+  
   }
 
   useEffect(() => {
@@ -206,3 +210,7 @@ const AnalyticsCard = () => {
 };
 
 export default AnalyticsCard;
+
+/*
+Log: figure out how to correctly implement the title unlock sound
+*/
