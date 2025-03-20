@@ -58,6 +58,7 @@
   border-radius: 10px;
   
   box-shadow: 0px 0px 50px #ff5bce;
+  
 }
 
 .background {
@@ -137,7 +138,7 @@
 
 .dark-theme .Card {
   background-color: #353330; /* Dark card background */
-  color: rgb(255, 86, 128); /* Light text */
+  color: #ff5680; /* Light text */
 }
 
 .settings-panel{
@@ -145,12 +146,10 @@
   opacity: .95;
   color: rgb(255, 86, 128);
 
-  padding: 20px;
-  width: 300px;
-
-  border-radius: 10px;
   
-  box-shadow: 0px 0px 50px #ff5bce;
+  width: auto;
+  gap: 20px;
+
   display: flex;
   flex-direction: column;
 }

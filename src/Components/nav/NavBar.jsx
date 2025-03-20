@@ -16,6 +16,7 @@ export default function Navbar() {
     <nav className={theme}> 
       <Link to="/" className="nav-link">Home</Link>
       <Link to="/settings" className="nav-link">Settings</Link>
+      <Link to="/analytics" className="nav-link">Analytics</Link>
     </nav>
   );
 }

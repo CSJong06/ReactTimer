@@ -40,7 +40,7 @@ const TitleSelection = ({ timersStarted, completedTimers, onTitleSelect }) => {
 
   //grab the title that was clicked on
   const handleTitleSelect = (title) => {
-    const randomValue = Math.random() < 0.5 ? "Value1" : "Value2";
+    const randomValue = Math.random() < 0.5 ? "TitleSelection1" : "TitleSelection2";
     //check if that title has been unlocked
     if (unlockedTitles.some(t => t.title === title)) {
       //update in state
@@ -50,11 +50,8 @@ const TitleSelection = ({ timersStarted, completedTimers, onTitleSelect }) => {
       //callback
       onTitleSelect(title);
     }
-    if (randomValue === "Value1") {
-      speak("TitleSelection1")
-  } else {
-      speak("TitleSelection2")
-  }
+    
+    speak(randomValue);
   };
 
   return (

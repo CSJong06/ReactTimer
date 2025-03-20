@@ -10,37 +10,40 @@ export default function SettingsPanel(){
     document.body.className = e.target.value === "dark" ? "dark-theme" : "light-theme";
   };
   return (
-    <div className='settings-panel'>
-      <h2>Settings</h2>
+    <div className='Card'>
+      <div className="settings-panel">
 
-      <label>
-        Theme:
-        <select value={settings.theme} onChange={handleThemeChange}>
-          <option value="light">Light Mode</option>
-          <option value="dark">Dark Mode</option>
-        </select>
-      </label>
+        <h2>Settings</h2>
 
-      
-      <label>
-        Notifications:
-        <input
-          type="checkbox"
-          checked={settings.notifications}
-          onChange={() => updateSetting("notifications", !settings.notifications)}
-        />
-      </label>
+        <label>
+          Theme:
+          <select value={settings.theme} onChange={handleThemeChange}>
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+          </select>
+        </label>
 
-      
-      <label>
-        App Sounds:
-        <input
-          type="checkbox"
-          checked={settings.sound}
-          onChange={() => updateSetting("sound", !settings.sound)}
-        />
-      </label>
+        
+        <label>
+          Notifications:
+          <input
+            type="checkbox"
+            checked={settings.notifications}
+            onChange={() => updateSetting("notifications", !settings.notifications)}
+          />
+        </label>
 
+        
+        <label>
+          App Sounds:
+          <input
+            type="checkbox"
+            checked={settings.sound}
+            onChange={() => updateSetting("sound", !settings.sound)}
+          />
+        </label>
+
+      </div>
     </div>
   );
 }

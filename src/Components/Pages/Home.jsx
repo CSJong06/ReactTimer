@@ -7,6 +7,8 @@ import { useSpeak } from '../context/AudioContext';
 import TimerCard from '../common/TimerCard';
 import ProgressBar from '../analytics/ProgressBar';
 import AnalyticsCard from '../common/AnalyticsCard';
+import { AnalyticsCardProvider } from '../context/AnalyticsCardContext';
+
 import ToastManager from '../Notifications/ToastManager';
 
 function Home() {
@@ -17,16 +19,12 @@ function Home() {
   const { speak } = useSpeak(); // Get the speak function from context
 
   const handleProfileClick = () => {
-    const randomValue = Math.random() < 0.5 ? "Value1" : "Value2";
+    const randomValue = Math.random() < 0.5 ? "ProfileOpen1" : "ProfileOpen2";
 
     setPanelVisible(!panelVisible);
     if (!panelVisible) {
-      if (randomValue === "Value1") {
-      speak("ProfileOpen1"); 
-      } else {
-        speak("ProfileOpen2");
-      }
-    }
+      speak(randomValue); 
+    }  
   };
 
   return (
@@ -46,7 +44,10 @@ function Home() {
         {panelVisible ? 'Close Panel' : 'View Profile'}
       </button>
       <div className={`sidePanel ${panelVisible ? 'visible' : 'hidden'}`}>
-        <AnalyticsCard style={{ maxWidth: '100%', padding: '10px' }} />
+        <AnalyticsCardProvider>
+          <AnalyticsCard style={{ maxWidth: '100%', padding: '10px' }} />
+        </AnalyticsCardProvider>
+
       </div>
 
       <div className='appContainer'>

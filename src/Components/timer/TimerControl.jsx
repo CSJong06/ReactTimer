@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import TimerInput from "./TimerInput";
 import { useNotifications } from "../context/NotificationContext"; // Import Notifications Hook
 import { useSpeak } from "../context/AudioContext";
+import { useTimerData } from "../context/TimerDataContext";
 
 const TimerButton = ({ time, setTime }) => {
     //initialize the states
@@ -11,6 +12,7 @@ const TimerButton = ({ time, setTime }) => {
 
     const { addNotification } = useNotifications(); // Get the function to trigger notifications
     const { speak } = useSpeak(); // Get the function to trigger audio
+    const { updateMonthlyData } = useTimerData(); // Get the function to update timer data
 
     // Initialize completedTimers count from localStorage
     const getCompletedTimers = () => {
@@ -27,17 +29,16 @@ const TimerButton = ({ time, setTime }) => {
         const timersStarted = Number(localStorage.getItem("timersStarted")) || 0;
         localStorage.setItem("timersStarted", timersStarted + 1); // Update the count
 
-        const randomValue = Math.random() < 0.5 ? "Value1" : "Value2";
+        const randomValue = Math.random() < 0.5 ? "TimerStart1" : "TimerStart2";
 
 
         if (!hasStarted) {
             setHasStarted(true);
             addNotification("Timer started!", "success"); // Notification for timer starting
-            if (randomValue === "Value1") {
-                speak("TimerStart1")
-            } else {
-                speak("TimerStart2")
-            }
+            updateMonthlyData("started"); //Update the monthly data
+            
+            speak(randomValue);
+            
         }
 
 
@@ -52,6 +53,7 @@ const TimerButton = ({ time, setTime }) => {
                     } else {
                         stopTimer(); // Stop the timer when time reaches 0
                         incrementCompletedTimers(); // Increment completed timers count
+                        updateMonthlyData("completed");
                         return 0;
                     }
                 });
@@ -69,16 +71,13 @@ const TimerButton = ({ time, setTime }) => {
     };
 
     const resetTimer = () => {
-        const randomValue = Math.random() < 0.5 ? "Value1" : "Value2";
+        const randomValue = Math.random() < 0.5 ? "Reset1" : "Reset2";
         stopTimer();
         setTime(1500); // Reset to 25 minutes
         setHasStarted(false);
         setIsRunning(false);
-        if (randomValue === "Value1") {
-            speak("Reset1")
-        } else {
-            speak("Reset2")
-        }
+        speak(randomValue)
+        
     };
 
     // Function to increment completed timers in localStorage

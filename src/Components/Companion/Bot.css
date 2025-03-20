@@ -1,10 +1,10 @@
 .bot-container {
     position: fixed;
-    top: 150px;
-    right: 200px;
+    bottom: 150px;
+    right: 0px;
     width: 150px; /* Adjust as needed */
     height: auto;
-    transform: scale(2); /* Default scale */
+    transform: scale(1); /* Default scale */
     transform-origin: center bottom;
 }
 
