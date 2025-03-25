@@ -6,14 +6,13 @@ const StreakChart = ({ streakHistory }) => {
 
     return (
         <div className="streak-chart">
-            <h3>Streak History</h3>
             {streakHistory.length === 0 ? (
                 <p>No data available</p> // Shows if history is empty
             ) : (
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer width="100%" height={250}>
                   <LineChart data={streakHistory}>
                     <XAxis dataKey="date" /> {/* Shows dates along the x-axis */}
-                    <YAxis />
+                    <YAxis domain={[0, 'dataMax + 1']}/>
                     <Tooltip 
                       formatter={(value, name, props) => {
                         const date = props.payload.date; // Get the date from the hovered data point
@@ -27,6 +26,5 @@ const StreakChart = ({ streakHistory }) => {
         </div>
     );
 };
-
 
 export default StreakChart;

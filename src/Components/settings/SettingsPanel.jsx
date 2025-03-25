@@ -1,14 +1,29 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { useContext } from "react";  
+// Importing audio files
+const toggleClickSound = new Audio('/audioFiles/ToggleClick.mp3');
+const toggleHoverSound = new Audio('/audioFiles/ToggleHover.mp3');
+
 import { SettingsContext } from "../context/SettingsContext";
+import { useSpeak } from "../context/AudioContext";
 
 export default function SettingsPanel(){
   const { settings, updateSetting } = useContext(SettingsContext);
+
   const handleThemeChange = (e) => {
-    //update it in settings
+    // Update it in settings
     updateSetting("theme", e.target.value);
-    //change the display
+    // Change the display
     document.body.className = e.target.value === "dark" ? "dark-theme" : "light-theme";
   };
+
+  const playToggleClickSound = () => {
+    toggleClickSound.play();
+  }
+
+  const playToggleHoverSound = () => {
+    toggleHoverSound.play();
+  }
+
   return (
     <div className='Card'>
       <div className="settings-panel">
@@ -23,7 +38,6 @@ export default function SettingsPanel(){
           </select>
         </label>
 
-        
         <label>
           Notifications:
           <input
@@ -33,13 +47,25 @@ export default function SettingsPanel(){
           />
         </label>
 
-        
         <label>
           App Sounds:
           <input
             type="checkbox"
             checked={settings.sound}
             onChange={() => updateSetting("sound", !settings.sound)}
+          />
+        </label>
+
+        <label>
+          Companion:
+          <input
+            type="checkbox"
+            checked={true}
+            onChange={(e) => {
+              e.preventDefault(); // Prevent default checkbox behavior
+              playToggleClickSound(); // Play toggle click sound
+            }}
+            onMouseEnter={playToggleHoverSound} // Play hover sound
           />
         </label>
 

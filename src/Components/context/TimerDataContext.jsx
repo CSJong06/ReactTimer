@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useEffect, useState } from "react";
 
 const TimerDataContext = createContext();
@@ -7,7 +8,7 @@ export const TimerDataProvider = ({ children }) => {
     return JSON.parse(localStorage.getItem("monthlyTimers")) || [];
   });
 
-  const updateMonthlyData = (type) => {
+  const updateMonthlyData = (type, TimerLength) => {
     const currentMonth = new Date().toISOString().slice(0, 7);
     const updatedData = monthlyData.map(entry => ({ ...entry }));
 
@@ -15,15 +16,18 @@ export const TimerDataProvider = ({ children }) => {
 
     if (existingEntry) {
       existingEntry[type] += 1;
+      existingEntry.timers.push(TimerLength);  // ✅ Store timer length
     } else {
       updatedData.push({
         month: currentMonth,
         started: type === "started" ? 1 : 0,
         completed: type === "completed" ? 1 : 0,
+        timers: [TimerLength]  // ✅ Initialize array with first value
       });
     }
 
     setMonthlyData([...updatedData]); // ✅ Triggers useEffect
+    localStorage.setItem("monthlyTimers", JSON.stringify(updatedData)); // ✅ Persist in storage
   };
 
   // ✅ Sync localStorage only when state changes

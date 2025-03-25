@@ -39,26 +39,42 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
 
 .read-the-docs {
   color: #888;
 }
 
 .Card {
-  background-color: rgb(53, 51, 48);
+  background-color: #272726;
   opacity: .95;
   color: rgb(255, 86, 128);
 
   padding: 20px;
   width: 500px;
+  z-index: 0;
+
+  border-radius: 10px;
+  
+}
+
+.CoreElements{
+  background-color: #353330;  
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack children vertically */
+
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+
+  opacity: .95;
+  color: rgb(255, 86, 128);
+
+  padding: 20px;
+  width: 1000px;
+  z-index: 0;
 
   border-radius: 10px;
   
   box-shadow: 0px 0px 50px #ff5bce;
-  
 }
 
 .background {
@@ -115,7 +131,11 @@
   transition: border-color 0.25s;
 }
 
-.appContainer{
+.TimerHolder {
+  display: flex;
+  gap: 50px;
+  justify-content: center; /* Center items within TimerHolder */
+
   display: flex;
   gap: 50px;
 }
@@ -137,18 +157,19 @@
 }
 
 .dark-theme .Card {
-  background-color: #353330; /* Dark card background */
+  background-color: #272726; /* Dark card background */
   color: #ff5680; /* Light text */
 }
 
 .settings-panel{
-  background-color: rgb(53, 51, 48);
+  background-color: #272726;
   opacity: .95;
   color: rgb(255, 86, 128);
 
   
   width: auto;
   gap: 20px;
+  
 
   display: flex;
   flex-direction: column;
@@ -181,23 +202,7 @@
   color: #566fff;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-
-.Console {
-  background-color: rgb(53, 51, 48);
-  width: 90%;
-  min-height: 25%;
-  max-height: 25%; /* Allow height to adjust based on content */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Add border */
-  padding: 15px; /* Increase padding */
-  border-radius: 10px; /* Ensure rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Add box shadow */
-}
-
-.light-theme .Console {
-  background-color: #f0f0f0;
 } 
-
 
 .sidePanel {
     position: fixed; /* Fix it to the side of the screen */
@@ -211,6 +216,7 @@
     transition: transform 0.3s ease; /* Smooth transition */
     transform: translateX(-100%); /* Hide it off-screen */
     overflow: auto;
+    z-index: 1;
 }
 
 .sidePanel.visible {
@@ -220,5 +226,3 @@
 .sidePanel.hidden {
     transform: translateX(-100%); /* Hide it off-screen */
 }
-
-

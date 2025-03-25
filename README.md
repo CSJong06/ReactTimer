@@ -40,7 +40,7 @@ The app is built with responsive web design principles in mind. However, users m
    ```
 
 ## Usage
-- Open the app in your browser at `http://localhost:3000`.
+- Open the app in your browser.
 - Use the timer functionality to set and manage your timers.
 - Navigate to the settings page to customize your experience.
 - View analytics to track your timer usage.

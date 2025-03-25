@@ -18,7 +18,12 @@ function Home() {
   const { addNotification } = useNotifications();
   const { speak } = useSpeak(); // Get the speak function from context
 
-  const handleProfileClick = () => {
+  const handleProfileClick = (event) => {
+    // Close the panel if clicking outside the profile image or side panel
+    if (panelVisible && !event.target.closest('.sidePanel') && !event.target.closest('img[alt="Profile"]')) {
+      setPanelVisible(false);
+    }
+
     const randomValue = Math.random() < 0.5 ? "ProfileOpen1" : "ProfileOpen2";
 
     setPanelVisible(!panelVisible);
@@ -27,22 +32,42 @@ function Home() {
     }  
   };
 
-  return (
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (panelVisible && !event.target.closest('.sidePanel') && !event.target.closest('img[alt="Profile"]')) {
+        setPanelVisible(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [panelVisible]);
+
+  return ( 
+
     <div>
       <img className="background" src="/Background.avif" />
       <div className="rain-overlay"></div>
 
-      <button 
+      <img 
+        src="/profile.jpg" 
+        alt="Profile" 
         onClick={handleProfileClick} 
-        className="toggle-button"
         style={{
           position: 'absolute',
-          top: '10px',
+          top: '5px',
           right: '10px',
+          zIndex: "6",
+          cursor: 'pointer',
+          width: '25px',  /* Adjust width */
+          height: '25px', /* Adjust height */
+          borderRadius: '50%' /* Make it circular */
         }}  
-      >
-        {panelVisible ? 'Close Panel' : 'View Profile'}
-      </button>
+      />
+
+
       <div className={`sidePanel ${panelVisible ? 'visible' : 'hidden'}`}>
         <AnalyticsCardProvider>
           <AnalyticsCard style={{ maxWidth: '100%', padding: '10px' }} />
@@ -50,12 +75,14 @@ function Home() {
 
       </div>
 
-      <div className='appContainer'>
-        <TimerCard initialTime={time} onTimeChange={setTime} />
-      </div>
-      <div>
+      <div className='CoreElements'>
+        <div className='TimerHolder'>
+          <TimerCard initialTime={time} onTimeChange={setTime} />
+        </div>
         <ToastManager />
-      </div>
+
+      </div>  
+        
     </div>
   );
 }

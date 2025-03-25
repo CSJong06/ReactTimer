@@ -1,0 +1,32 @@
+.chart-card {
+  margin-top:40px;
+  background-color: rgb(53, 51, 48);
+  opacity: .95;
+  color: rgb(255, 86, 128);
+
+  padding: 20px;
+  width: 1000px;
+
+  border-radius: 10px;
+  
+  box-shadow: 0px 0px 50px #ff5bce;
+  
+}
+
+.chart-container {
+  display: flex;
+  justify-content: space-between; /* Ensures spacing between charts */
+  gap: 20px; /* Adjusts spacing between elements */
+  flex-wrap: wrap; /* Allows wrapping if the screen is too small */
+  
+}
+  
+.chart {
+  flex: 1; /* Makes each chart take equal width */
+  min-width: 300px; /* Prevents charts from getting too small */
+  background-color: #272726;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px #1f1f1f;
+}
+  

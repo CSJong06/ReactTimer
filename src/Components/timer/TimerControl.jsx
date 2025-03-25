@@ -35,7 +35,7 @@ const TimerButton = ({ time, setTime }) => {
         if (!hasStarted) {
             setHasStarted(true);
             addNotification("Timer started!", "success"); // Notification for timer starting
-            updateMonthlyData("started"); //Update the monthly data
+            updateMonthlyData("started", time); //Update the monthly data
             
             speak(randomValue);
             
