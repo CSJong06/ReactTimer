@@ -27,7 +27,7 @@ export const SpeakProvider = ({ children }) => {
     TitleSelection2: "/audioFiles/TitleSelection2.mp3",
     TitleUnlock1: "/audioFiles/TitleUnlock1.mp3",
     TitleUnlock2: "/audioFiles/TitleUnlock2.mp3",
-    ToggleCLick: "/audioFiles/ToggleClick.mp3",
+    ToggleClick: "/audioFiles/ToggleClick.mp3",
     ToggleHover: "/audioFiles/ToggleHover.mp3",
     ViewSettings1: "/audioFiles/ViewSettings1.mp3",
     ViewSettings2: "/audioFiles/ViewSettings2.mp3",

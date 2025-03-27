@@ -15,8 +15,9 @@ const TimerBarChart = () => {
 
             <Tooltip />
             <Legend />
-            <Bar dataKey="started" fill="#ff5680" name="Timers Started" />
-            <Bar dataKey="completed" fill="#f11e53" name="Timers Completed" />
+            <Bar dataKey="started" fill='#ff5680' name="Timers Started" />
+            <Bar dataKey="completed" fill='#f11e53' name="Timers Completed" />
+
           </BarChart>
         </ResponsiveContainer>
       ) : (

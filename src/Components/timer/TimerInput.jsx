@@ -24,14 +24,18 @@ const TimerInput = ({ initialTime = 0, onTimeChange }) => { // Default value for
                 <button className="btn" onClick={() => { setTime(300); onTimeChange(300); }}>5:00</button>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div style={{ display: 'flex', gap: '10px' }}>
                 <input 
                     type="number" 
                     placeholder="other" 
                     min="0"
                     onChange={handleTimeChange} // Handle input change
+                    style={{ width: "50%", marginLeft: "120px"}}
                 />
-                <button className="confirmBtn" onClick={handleConfirm}> Confirm </button>
+                <button 
+                className="confirmBtn" 
+                onClick={handleConfirm}
+                > Confirm </button>
             </div>
         </div>
     );

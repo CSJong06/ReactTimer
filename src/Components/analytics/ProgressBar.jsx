@@ -1,5 +1,4 @@
-import React from "react";
-import "./ProgressBar.css";
+import React, {useContext} from "react";
 
 //grab the current progress from the state
 const getNextMilestone = (currentValue) => {

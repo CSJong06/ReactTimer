@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 const Achievements = ({ selectedTitle }) => {
   return (
     <div>
-      <h2 style={{ color: "white" }}>Title</h2>
-      <div style={{ backgroundColor: "#474747", borderRadius: "10px", marginTop: "-10px" }}>
-        <p style={{ marginLeft: "15px", padding: "5px", color: "rgb(255, 86, 128)" }}>
+      <h2>Title</h2>
+      <div className="achievementCard">
+        <p className="selectedTitle">
           {selectedTitle}
         </p>
       </div>

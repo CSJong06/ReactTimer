@@ -2,7 +2,8 @@ import React from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
 //get streakHistory from localstorage
-const StreakChart = ({ streakHistory }) => {
+const StreakChart = ({ streakHistory}) => {
+
 
     return (
         <div className="streak-chart">
@@ -19,7 +20,9 @@ const StreakChart = ({ streakHistory }) => {
                         return [`${value} 🔥`, `Date: ${date}`]; // Show both streak count & date
                       }} 
                     />
-                    <Line type="monotone" dataKey="streak" stroke="#ff5680" strokeWidth={2} />
+                    <Line type="monotone" dataKey="streak" stroke='#ff5bce' strokeWidth={2} />
+
+
                   </LineChart>
                 </ResponsiveContainer>
             )}

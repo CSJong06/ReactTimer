@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSpeak } from "../context/AudioContext";
 
-import "./TitleSelection.css"
-
 // declare all titles and thier asscoiated data
 const allTitles = [
   { type: "timersStarted", value: 5, title: "Focused", desc: "Focused: 5 timers started"  },

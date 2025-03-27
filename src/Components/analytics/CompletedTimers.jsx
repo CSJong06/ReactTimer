@@ -9,7 +9,7 @@ const CompletedTimers = ({ completedTimers }) => {
     <div>
       
       <h2>Completed timers: {completedTimers}</h2>
-      <div style={{ backgroundColor: "#474747", borderRadius: "10px", marginTop: "-10px" }}>
+      <div className="timerData">
 
         {completedTimers === 0 ? ( 
 

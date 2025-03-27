@@ -12,8 +12,7 @@ const defaultSettings = {
     toggleTheme: () => {}, // Placeholder for toggle function
 
     notifications: true,
-    sound: false, //currently doesn't do anything
-    companion: true
+    sound: false //currently doesn't do anything
 }
 
 export const SettingsProvider = ({ children }) => {

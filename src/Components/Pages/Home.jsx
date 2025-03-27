@@ -7,6 +7,7 @@ import { useSpeak } from '../context/AudioContext';
 import TimerCard from '../common/TimerCard';
 import ProgressBar from '../analytics/ProgressBar';
 import AnalyticsCard from '../common/AnalyticsCard';
+import SettingsPanel from '../settings/SettingsPanel';
 import { AnalyticsCardProvider } from '../context/AnalyticsCardContext';
 
 import ToastManager from '../Notifications/ToastManager';
@@ -72,7 +73,7 @@ function Home() {
         <AnalyticsCardProvider>
           <AnalyticsCard style={{ maxWidth: '100%', padding: '10px' }} />
         </AnalyticsCardProvider>
-
+        <SettingsPanel />
       </div>
 
       <div className='CoreElements'>

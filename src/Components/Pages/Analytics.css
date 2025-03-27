@@ -1,16 +1,12 @@
 .chart-card {
-  margin-top:40px;
-  background-color: rgb(53, 51, 48);
+  margin-top: 40px;
+  background-color: #353330;
   opacity: .95;
   color: rgb(255, 86, 128);
-
   padding: 20px;
   width: 1000px;
-
   border-radius: 10px;
-  
   box-shadow: 0px 0px 50px #ff5bce;
-  
 }
 
 .chart-container {
@@ -18,9 +14,8 @@
   justify-content: space-between; /* Ensures spacing between charts */
   gap: 20px; /* Adjusts spacing between elements */
   flex-wrap: wrap; /* Allows wrapping if the screen is too small */
-  
 }
-  
+
 .chart {
   flex: 1; /* Makes each chart take equal width */
   min-width: 300px; /* Prevents charts from getting too small */
@@ -29,4 +24,27 @@
   border-radius: 10px;
   box-shadow: 5px 5px #1f1f1f;
 }
-  
+
+.exportBtn {
+  padding: 5px;
+  border-radius: 5px;
+  width: 100px;
+  color: #ffff;
+  background-color: #2b2bff;
+}
+
+/* Light Theme Styles */
+.light-theme .chart-card {
+  background-color: #f0f0f0; /* Light background for light theme */
+  color: #333; /* Dark text for light theme */
+}
+
+.light-theme .chart {
+  background-color: #ffffff; /* Light background for light theme */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Softer shadow for light theme */
+}
+
+.light-theme .exportBtn {
+  background-color: #007bff; /* Lighter blue for light theme */
+  color: #ffffff; /* White text for button */
+}

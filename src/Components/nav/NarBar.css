@@ -19,11 +19,11 @@ nav {
 }
 
 .light-theme .nav-link {
-    color: #566fff; /* Link color for light theme */
+  color: #566fff; /* Link color for light theme */
 }
 
 .light-theme nav {
   background-color: #ffffff;
   color: rgb(0, 0, 0); /* Text color for light theme */
-  box-shadow: none; /* Remove shadow in light theme */
+  box-shadow: 0px 0px 50px #566fff;
 }

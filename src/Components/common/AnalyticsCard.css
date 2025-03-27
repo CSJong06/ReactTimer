@@ -1,0 +1,153 @@
+.sidePanel {
+    position: fixed; /* Fix it to the side of the screen */
+    top: 0;
+    left: 0; /* Change to right: 0; if you want it on the right */
+    width: 325px; /* Set a width for the side panel */
+    height: 100%; /* Full height */
+    background-color: #353330; /* Background color */
+    text-align: left;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
+    transition: transform 0.3s ease; /* Smooth transition */
+    transform: translateX(-100%); /* Hide it off-screen */
+    overflow: auto;
+    z-index: 1;
+}
+
+.light-theme .sidePanel {
+  background-color: #f0f0f0;
+}
+
+.sidePanel.visible {
+    transform: translateX(0); /* Bring it into view */
+}
+
+.sidePanel.hidden {
+    transform: translateX(-100%); /* Hide it off-screen */
+}
+
+h2{
+    color: #ff5680;
+}
+
+.light-theme h2{
+    color: #566fff;
+}
+
+.achievementCard{
+    background-Color: #474747;
+    border-Radius: 10px;
+    margin-Top: -10px;
+}
+
+.selectedTitle{
+    margin-Left: 15px; 
+    padding: 5px;
+    color: #ff5680;
+}
+
+.light-theme .achievementCard{
+    background-color: #cacaca;
+}
+
+.light-theme .selectedTitle{
+    color: #566fff;
+}
+
+.timerData{
+    background-Color: #474747;
+    border-Radius: 10px;
+    margin-Top: -10px;
+}
+
+.light-theme .timerData{
+    background-color: #cacaca;
+}
+
+.progress-container {
+    width: 100%;
+    padding: 5px;
+    margin: 20px 0;
+}
+    
+.progress-bar {
+  width: 95%;
+  height: 15px;
+  background-color: #333;
+  border-radius: 5px;
+  overflow: hidden;
+}
+  
+.progress-fill {
+  height: 100%;
+  background-color: #ff4081;
+  transition: width 0.5s ease-in-out;
+}
+
+.light-theme .progress-bar {
+  background-color: #b3b3b3;
+}
+
+.light-theme .progress-fill {
+    background-color: #566fff;
+}
+
+.streak{
+    background-Color: #474747 ;
+    border-Radius: 5px ;
+    margin-Top: -10px;
+    padding: 2px;
+}
+
+.light-theme .streak{
+    background-color: #cacaca;
+}
+
+
+.title-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .title-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .unlocked {
+    background: #ff4081;
+    color: white;
+  }
+  
+  .locked {
+    background: gray;
+    color: lightgray;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .light-theme .unlocked{
+    background-color: #566fff;
+  }
+
+  .settings-panel{
+    background-color: #333;
+    opacity: .95;
+    color: rgb(255, 86, 128);
+  
+    gap: 25px;
+    width: auto;
+    
+  
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .light-theme .settings-panel{
+    background-color: #f0f0f0;
+    color: #000000;
+  }

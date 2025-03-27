@@ -66,15 +66,21 @@
   align-items: center; /* Center items vertically */
 
   opacity: .95;
-  color: rgb(255, 86, 128);
+  color: #ff5680;
 
   padding: 20px;
   width: 1000px;
+  height: 450px;
   z-index: 0;
 
   border-radius: 10px;
   
   box-shadow: 0px 0px 50px #ff5bce;
+}
+
+.light-theme .CoreElements {
+  background-color: #f7f7f7;
+  box-shadow: 0px 0px 50px #566fff;
 }
 
 .background {
@@ -124,12 +130,16 @@
 .confirmBtn{
   border-radius: 5px;
   border: 1px solid #1a1a1a;
+
+  width: 15%;
+  padding: 5px;
   
-  background-color: #1a1a1a;
-  color: #ff5bce;
+  background-color: #ff5680;
+  color: black;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 
 .TimerHolder {
   display: flex;
@@ -161,25 +171,6 @@
   color: #ff5680; /* Light text */
 }
 
-.settings-panel{
-  background-color: #272726;
-  opacity: .95;
-  color: rgb(255, 86, 128);
-
-  
-  width: auto;
-  gap: 20px;
-  
-
-  display: flex;
-  flex-direction: column;
-}
-
-.light-theme .settings-panel{
-  background-color: #f0f0f0;
-  color: #000000;
-}
-
 .light-theme .btn {
   margin: 5px;
   border-radius: 8px;
@@ -198,31 +189,9 @@
   border-radius: 5px;
   border: 1px solid #1a1a1a;
   
-  background-color: #ffffff;
-  color: #566fff;
+  background-color: #566fff;
+  color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s;
 } 
 
-.sidePanel {
-    position: fixed; /* Fix it to the side of the screen */
-    top: 0;
-    left: 0; /* Change to right: 0; if you want it on the right */
-    width: 325px; /* Set a width for the side panel */
-    height: 100%; /* Full height */
-    background-color: #353330; /* Background color */
-    text-align: left;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
-    transition: transform 0.3s ease; /* Smooth transition */
-    transform: translateX(-100%); /* Hide it off-screen */
-    overflow: auto;
-    z-index: 1;
-}
-
-.sidePanel.visible {
-    transform: translateX(0); /* Bring it into view */
-}
-
-.sidePanel.hidden {
-    transform: translateX(-100%); /* Hide it off-screen */
-}

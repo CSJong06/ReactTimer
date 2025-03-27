@@ -39,7 +39,8 @@ export const AnalyticsCardProvider = ({ children }) => {
                 addNotification(milestone.message, "success");
 
                 // Play sound on unlock
-                speak("AchievementUnlocked");
+                const randomValue = Math.random() < 0.5 ? "TitleUnlock1" : "TitleUnlock2";
+                speak(randomValue)
             }
         });
 
