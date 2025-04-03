@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-const TimerInput = ({ initialTime = 0, onTimeChange }) => { // Default value for initialTime
+const TimerInput = ({ initialTime = 0, onTimeChange, updateMonthlyData }) => { // Default value for initialTime
+
     const [time, setTime] = useState(initialTime);
 
     const handleTimeChange = (e) => {
@@ -29,7 +30,11 @@ const TimerInput = ({ initialTime = 0, onTimeChange }) => { // Default value for
                     type="number" 
                     placeholder="other" 
                     min="0"
-                    onChange={handleTimeChange} // Handle input change
+                onChange={(e) => {
+                    handleTimeChange(e); // Handle input change
+                    updateMonthlyData("started", e.target.value); // Call updateMonthlyData when time is confirmed
+                }} 
+
                     style={{ width: "50%", marginLeft: "120px"}}
                 />
                 <button 

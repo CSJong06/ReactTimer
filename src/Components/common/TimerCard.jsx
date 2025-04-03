@@ -9,7 +9,8 @@ import TimerDisplay from '../timer/TimerDisplay.jsx';
 import TimerInput from '../timer/TimerInput.jsx';
 
 
-const TimerCard = ({ initialTime, onTimeChange }) => {
+const TimerCard = ({ initialTime, onTimeChange, updateMonthlyData }) => {
+
 
     // state to hold the timer value
     const [time, setTime] = useState(initialTime);
@@ -25,7 +26,11 @@ const TimerCard = ({ initialTime, onTimeChange }) => {
     return (
 
         <div className="Card">
-            <TimerInput initialTime={time} onTimeChange={setTime} />
+            <TimerInput initialTime={time} onTimeChange={(newTime) => { 
+                setTime(newTime); 
+                updateMonthlyData("started", newTime); // Call updateMonthlyData when time is confirmed
+            }} />
+
             <TimerDisplay time={time} />
             <TimerButton time={time} setTime={setTime} onStart={handleStartTimer} /> {/* Pass the start handler */}
 
