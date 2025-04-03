@@ -20,7 +20,8 @@ const StreakChart = ({ streakHistory}) => {
                         return [`${value} 🔥`, `Date: ${date}`]; // Show both streak count & date
                       }} 
                     />
-                    <Line type="monotone" dataKey="streak" stroke='#ff5bce' strokeWidth={2} />
+                    <Line type="linear" dataKey="streak" stroke='#ff5bce' strokeWidth={2} />
+
 
 
                   </LineChart>

@@ -6,7 +6,7 @@
   padding: 20px;
   width: 1000px;
   border-radius: 10px;
-  box-shadow: 0px 0px 50px #ff5bce;
+  
 }
 
 .chart-container {
@@ -37,6 +37,7 @@
 .light-theme .chart-card {
   background-color: #f0f0f0; /* Light background for light theme */
   color: #333; /* Dark text for light theme */
+  box-shadow: 0px 0px 50px #007bff;
 }
 
 .light-theme .chart {

@@ -1,34 +1,13 @@
 .bot-container {
     position: fixed;
-    bottom: 150px;
-    right: 0px;
+    bottom: 5px;
+    right: -20px;
     width: 150px; /* Adjust as needed */
     height: auto;
     transform: scale(1); /* Default scale */
     transform-origin: center bottom;
 }
 
-.bot-body {
+img {
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1; /* Below everything */
 }
-
-.bot-eyelid {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 3; /* Above the pupil */
-}
-
-.bot-pupil {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2; /* Above the pupil */
-}
-
